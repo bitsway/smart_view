@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SMART VIEW</title>
+    <link rel="stylesheet" href="static/c.min.css" />
+	<link rel="stylesheet" href="static/list.css" />
+    <link rel="stylesheet" href="static/jquery.mobile-1.4.0.min.css" /> 
+   
+    <script src="static/jquery-1.10.2.min.js">   </script>
+    <script src="static/jquery.mobile-1.4.0.min.js">   </script>
+	<script src="static/list.min.js"></script>	
+    
+    <script>
+    	function syncPage(){
+			$(".errorChk").text("");
+			$.mobile.navigate("#pagesync")
+			}
+	</script>
+	       
+    <style>	
+    </style>	
+</head>
+
+<body >
+
+
+<!-- MAIN MENU ----------------------------------------------------------------------------- -->
+<div data-theme="c" data-role="page" id="homePage" style="overflow:scroll;">
+    <div data-theme="c" data-role="header" data-position="fixed" >
+        <a data-role="button" href="#leftpanel" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets" ><img src="menu.png" /></a>
+        <a data-role="button" onClick="exit();" ><img src="exit.png" /></a>
+        <h3>SMART VIEW</h3>
+    </div>
+    
+    <div data-role="content" >  		
+     <div id="users">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td><input class="search" type="text" id="myInput"  style="height:42px;" placeholder="Search keywords" title="Type in a name"></td>
+			<td><input type="button" name="btnSearch" id="btnSearch" class="ui-btn" value="Search" onclick="searchData()" /></td>
+		  </tr>
+	  </table>
+      
+  <ul  class="list" id="myUL">
+	  <li><a href="#"  class="name"> Ma medical </a></li>     
+	  <li><a href="#"  class="name"> Jannat Pharmacy </a></li>     
+	  <li><a href="#"  class="name"> Lazz Pharma </a></li>     
+	  <li><a href="#"  class="name"> Shifa Pharmacy </a></li>     
+	  <li><a href="#"  class="name"> Prescription Aid</a></li>     
+	  <li><a href="#"  class="name"> Care Pharmacy </a></li>     
+	  <li><a href="#"  class="name"> Health & hope pharma </a></li>     
+	  <li><a href="#"  class="name"> New Tazrin Pharmacy</a></li>     
+	  <li><a href="#"  class="name"> Pharmacy plus</a></li>     
+	  <li><a href="#"  class="name"> Sonar Bangla medical</a></li>     
+	  <li><a href="#"  class="name"> Bismilla Pharmacy </a></li>     
+	  <li><a href="#"  class="name"> 24 Hour Pharmacy </a></li>  
+  </ul>
+
+</div>                  
+</div>
+ 
+<div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="c">
+        <div align="center"></div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <ul data-role="listview" >
+          <li><a data-role="button" class="ui-btn" onclick="syncPage();"><center><img src="sync.png" /></center></a></li>		  
+        </ul>
+        <br/>
+        <br/>
+        <br/>
+        <div align="center"><!--<img src="logo_gp.png" />--></div>
+    </div>   
+ 
+    
+</div>
+
+<div data-theme="c" data-role="page" id="pagesync" >
+    <div data-theme="c" data-role="header" data-position="fixed" >
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
+        <h3>Sync</h3>
+    </div>
+    <div data-role="content">
+        <div class="errorMsg"></div>
+        <ul data-role="listview" data-inset="true" data-theme="c">
+            <li class="ui-field-contain">
+                <label for="mobile"> Mobile No</label>
+                <input name="mobile" id="mobile" placeholder="" value="" type="number">
+            </li>
+            <li class="ui-field-contain">
+                <label for="password">Password </label>
+                <input type="password" name="password" id="password" placeholder="" value="" >
+            </li>
+        </ul>        
+        <a data-role="button" href="#" id="syncBasic" onclick="syncBasic()"  data-theme="c" data-transition="slide" >Sync</a>
+		<div id="#syncData"></div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+</div>
+
+
+
+
+<div data-theme="c" data-role="page" id="first_page" style="overflow:scroll;" >
+    <div data-theme="c" data-role="header" data-position="fixed" >
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+        <h3>SMART VIEW</h3>
+    </div>
+	<div data-role="content"  > 
+    <div id="selectedMedicine" ></div>
+    	<ul data-role="listview" data-inset="true" data-theme="c">
+            <li class="ui-field-contain">
+                <table width="100%" border="1" bordercolor="#80e5ff" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="100">INV-10135</td>
+                    <td width="35"><div><input type="checkbox" id="chkbox" name="chkbox" /></div></td>
+                    <td width="100" align="right"><input type="button" name="btnSearch"  value="Delivery" onclick="searchData()" /></td>
+                  </tr>
+                </table>
+                <br />
+                <span style="background-color:#F2F2F2;" class="auto_break"><strong>Collection</strong></span>
+                <table width="100%" border="1" bordercolor="#80e5ff" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Due</th>
+                  </tr>
+                  <tr>
+                    <td>1013</td>
+                    <td>25-01-2017</td>
+                    <td>5500</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Collection</td>
+                    <td><input type="number" id="" name="" /></td>
+                  </tr>
+                </table>
+                <br /><br />
+                <input type="button" name="btnSearch" id="btnSearch" class="ui-btn" value="Submit" onclick="searchData()" />
+
+            </li>
+        </ul> 
+    </div>
+                             
+   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    
+</div>
+
+
+
+
+<script type="text/javascript" src="phonegap.js"></script>
+<script src="static/my.js"></script>
+
+</body>
+</html>
